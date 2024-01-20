@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using mshop.orders.domain.Entities;
 
 namespace mshop.orders.domain.Repositories
 {
-    internal interface IOrderRepository
+    public interface IOrderRepository
     {
-        public void CreateOrder();
+        public void CreateOrder(Order order);
+        public List<Order> GetOrdersByEmail(string email);
     }
 }

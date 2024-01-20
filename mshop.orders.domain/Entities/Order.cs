@@ -21,6 +21,6 @@ namespace mshop.orders.domain.Entities
         public decimal TotalPriceBeforeDiscount { get; set; }
 
         public decimal TotalPriceAfterDiscount { get; set; } 
-        public decimal Discount { get; set; }
+        public decimal DiscountPercentage { get; set; }
     }
 }
