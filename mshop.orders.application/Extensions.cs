@@ -11,6 +11,12 @@ namespace mshop.orders.application
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
+            var assembly = typeof(Extensions).Assembly;
+            services.AddMediatR(configuration =>
+            {
+                configuration.RegisterServicesFromAssemblies(assembly);
+            });
+
             return services;
         }
     }

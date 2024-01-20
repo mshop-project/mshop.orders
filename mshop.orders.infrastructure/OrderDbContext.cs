@@ -9,16 +9,16 @@ namespace mshop.orders.infrastructure
         public IMongoCollection<Order> OrdersCollection { get; set; }
 
         public OrderDbContext(
-        IOptions<OrderDatabaseSettings> bookStoreDatabaseSettings)
+        IOptions<OrderDatabaseSettings> orderDatabaseSettings)
         {
             var mongoClient = new MongoClient(
-                bookStoreDatabaseSettings.Value.ConnectionString);
+                orderDatabaseSettings.Value.ConnectionString);
 
             _database = mongoClient.GetDatabase(
-                bookStoreDatabaseSettings.Value.DatabaseName);
+                orderDatabaseSettings.Value.DatabaseName);
 
             OrdersCollection = _database.GetCollection<Order>(
-            bookStoreDatabaseSettings.Value.BooksCollectionName);
+            orderDatabaseSettings.Value.OrdersCollectionName);
         }
 
    

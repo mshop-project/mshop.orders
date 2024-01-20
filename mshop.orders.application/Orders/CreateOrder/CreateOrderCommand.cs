@@ -2,5 +2,5 @@
 using mshop.orders.application.DTOs;
 namespace mshop.orders.application.Orders.CreateOrder
 {
-record CreateOrderCommand(OrderDto orderDto) : IRequest;
+    public sealed record CreateOrderCommand(OrderDto orderDto) : IRequest;
 }
