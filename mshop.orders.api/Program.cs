@@ -4,6 +4,8 @@ using mshop.orders.infrastructure;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.Configure<OrderDatabaseSettings>(
+    builder.Configuration.GetSection("OrderDatabase"));
 
 builder.Services
     .AddApplication()

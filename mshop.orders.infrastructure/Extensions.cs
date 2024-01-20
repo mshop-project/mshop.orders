@@ -12,7 +12,7 @@ namespace mshop.orders.infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
             
-            return services;
+            return services.AddSingleton<OrderDbContext>();
         }
     }
 }
