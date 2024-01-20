@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace mshop.orders.application
 {
-    public static class DependencyInjection
+    public static class Extensions
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {

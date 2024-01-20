@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace mshop.orders.infrastructure
 {
-    public static class DependencyInjection
+    public static class Extensions
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
+            
             return services;
         }
     }
