@@ -19,7 +19,7 @@ namespace mshop.orders.application.Orders.CreateOrder
             var data = request.orderDto;
             await _orderRepository.CreateAsync(new Order
             {
-                IdProducts = data.IdProducts!.ToList(),
+                IdProducts = [.. data.IdProducts!],
                 ClientEmail = data.ClientEmail!,
                 TotalPriceBeforeDiscount = (decimal)data.TotalPriceBeforeDiscount!,
                 TotalPriceAfterDiscount = (decimal)data.TotalPriceAfterDiscount!,

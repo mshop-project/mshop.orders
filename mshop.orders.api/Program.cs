@@ -1,15 +1,9 @@
-using mshop.orders.application;
-using mshop.orders.infrastructure;
+using mshop.orders.api;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.Configure<OrderDatabaseSettings>(
-    builder.Configuration.GetSection("OrderDatabase"));
-
 builder.Services
-    .AddApplication()
-    .AddInfrastructure();
+    .AddOrdersExtensions(builder.Configuration);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
