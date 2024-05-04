@@ -12,9 +12,10 @@ namespace mshop.orders.application.Orders.GetOrders
         {
             this._orderRepository = orderRepository;
         }
+
         public async Task<IEnumerable<OrderDto>> Handle(GetOrdersByEmailQuery request, CancellationToken cancellationToken)
         {
-           var orders = await _orderRepository.GetAsync(request.email); 
+           var orders = await _orderRepository.GetAsync(request.Email); 
 
             return orders.Select(ord  
                 => new OrderDto { 

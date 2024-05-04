@@ -1,7 +1,6 @@
 ﻿using MediatR;
-using MongoDB.Driver;
-using mshop.orders.domain.Entities;
 using mshop.orders.domain.Repositories;
+using mshop.sharedkernel.coredata.Orders;
 
 namespace mshop.orders.application.Orders.CreateOrder
 {

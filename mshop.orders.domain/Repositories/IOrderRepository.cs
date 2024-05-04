@@ -1,4 +1,4 @@
-﻿using mshop.orders.domain.Entities;
+﻿using mshop.sharedkernel.coredata.Orders;
 
 namespace mshop.orders.domain.Repositories
 {

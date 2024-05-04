@@ -1,9 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AutoMapper;
+using Microsoft.Extensions.DependencyInjection;
+using mshop.orders.application.Mapper;
 
 namespace mshop.orders.application
 {
@@ -16,6 +13,12 @@ namespace mshop.orders.application
             {
                 configuration.RegisterServicesFromAssemblies(assembly);
             });
+
+            services.AddScoped(provider => new MapperConfiguration(cfg =>
+            {
+                using var scope = provider.CreateScope();
+                cfg.AddProfile(new OrderProfile());
+            }).CreateMapper());
 
             return services;
         }

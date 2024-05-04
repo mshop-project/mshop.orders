@@ -1,6 +1,7 @@
 ﻿using MongoDB.Driver;
 using Microsoft.Extensions.Options;
-using mshop.orders.domain.Entities;
+using mshop.sharedkernel.coredata.Orders;
+using mshop.orders.domain.Settings;
 namespace mshop.orders.infrastructure
 {
     public class OrderDbContext
@@ -20,7 +21,5 @@ namespace mshop.orders.infrastructure
             OrdersCollection = _database.GetCollection<Order>(
             orderDatabaseSettings.Value.OrdersCollectionName);
         }
-
-   
     }
 }

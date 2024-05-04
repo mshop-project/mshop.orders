@@ -7,12 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MassTransit" Version="8.2.2" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.1" />
     <PackageReference Include="MongoDB.Driver" Version="2.23.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\mshop.sharedkernel.messaging\mshop.sharedkernel.messaging.csproj" />
     <ProjectReference Include="..\mshop.orders.domain\mshop.orders.domain.csproj" />
   </ItemGroup>
 

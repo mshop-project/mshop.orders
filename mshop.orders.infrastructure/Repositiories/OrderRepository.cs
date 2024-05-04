@@ -1,12 +1,13 @@
 ﻿using MongoDB.Driver;
-using mshop.orders.domain.Entities;
 using mshop.orders.domain.Repositories;
+using mshop.sharedkernel.coredata.Orders;
 
 namespace mshop.orders.infrastructure.Repositiories
 {
     public sealed class OrderRepository : IOrderRepository
     {
         private readonly OrderDbContext _orderDbContext;
+
         public OrderRepository(OrderDbContext orderDbContext)
         {
             _orderDbContext = orderDbContext;
@@ -17,6 +18,5 @@ namespace mshop.orders.infrastructure.Repositiories
 
         public async Task CreateAsync(Order newBook) =>
             await _orderDbContext.OrdersCollection.InsertOneAsync(newBook);
-
     }
 }
