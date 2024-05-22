@@ -3,6 +3,8 @@ using mshop.orders.api.BusHandlers;
 using mshop.orders.application;
 using mshop.orders.domain.Settings;
 using mshop.orders.infrastructure;
+using mshop.sharedkernel.messaging.Data.Request.Orders;
+using mshop.sharedkernel.messaging.Data.Request.Products;
 
 namespace mshop.orders.api
 {
@@ -10,7 +12,8 @@ namespace mshop.orders.api
     {
         public static IServiceCollection AddOrdersExtensions(this IServiceCollection services, IConfiguration configuration)
         {
-            return services.Configure<OrderDatabaseSettings>(configuration.GetSection("OrderDatabase"))
+            return services
+                .Configure<OrderDatabaseSettings>(configuration.GetSection("OrderDatabase"))
                 .AddApplication()
                 .AddInfrastructure(); 
         }
@@ -20,5 +23,6 @@ namespace mshop.orders.api
             config.AddConsumer<GetOrdersByEmailConsumer>();
             return config;
         }
+
     }
 }
