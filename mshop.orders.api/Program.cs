@@ -1,5 +1,7 @@
 using MassTransit;
 using mshop.orders.api;
+using Steeltoe.Discovery.Client;
+using Steeltoe.Discovery.Consul;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +13,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddServiceDiscovery(o => o.UseConsul());
+
 builder.Services.AddMassTransit(busConfigurator =>
 {
     busConfigurator.SetKebabCaseEndpointNameFormatter();
@@ -19,7 +23,7 @@ builder.Services.AddMassTransit(busConfigurator =>
 
     busConfigurator.UsingRabbitMq((context, config) =>
     {
-        config.Host("localhost", "/", hostConfigurator =>
+        config.Host("rabbitmq", "/", hostConfigurator =>
         {
             hostConfigurator.Username("guest");
             hostConfigurator.Password("guest");
@@ -44,13 +48,10 @@ var app = builder.Build();
 app.UseCors("CORS");
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseAuthorization();
 

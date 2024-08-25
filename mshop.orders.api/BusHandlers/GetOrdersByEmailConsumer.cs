@@ -1,11 +1,9 @@
-﻿using AutoMapper;
-using MassTransit;
+﻿using MassTransit;
 using MediatR;
 using mshop.orders.application.Orders.GetOrders;
 using mshop.sharedkernel.coredata.Orders;
 using mshop.sharedkernel.messaging.Data.Request.Orders;
 using mshop.sharedkernel.messaging.Data.Response.Orders;
-using System.Linq;
 
 namespace mshop.orders.api.BusHandlers
 {
@@ -20,11 +18,11 @@ namespace mshop.orders.api.BusHandlers
             var orders = ordersDto.Select(orderDto => new Order
             {
                 Id = orderDto.Id,
-                ClientEmail = orderDto.ClientEmail,
-                DiscountPercentage = (decimal)orderDto.DiscountPercentage,
-                IdProducts = orderDto.IdProducts,
-                TotalPriceAfterDiscount = (decimal)orderDto.TotalPriceAfterDiscount,
-                TotalPriceBeforeDiscount = (decimal)orderDto.TotalPriceBeforeDiscount
+                ClientEmail = orderDto.ClientEmail!,
+                DiscountPercentage = (decimal)orderDto.DiscountPercentage!,
+                IdProducts = orderDto.IdProducts!,
+                TotalPriceAfterDiscount = (decimal)orderDto.TotalPriceAfterDiscount!,
+                TotalPriceBeforeDiscount = (decimal)orderDto.TotalPriceBeforeDiscount!
             });
 
             ordersResponse.Orders.AddRange(orders);
